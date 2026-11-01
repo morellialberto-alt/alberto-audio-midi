@@ -1,33 +1,42 @@
-# ACTIVE_OPERATOR_STATE — M02, PR Draft #1
+# ACTIVE_OPERATOR_STATE — M02 / Governance
 
-Snapshot: 2026-11-01. Questa fotografia non sostituisce il Recovery Audit live.
-Milestone: M02 — Repository e governance
-Stato: PREPARED / PR Draft OPEN; FQ G2 non ancora dichiarata PASS
-Product Owner: Alberto
-Repo: morellialberto-alt/alberto-audio-midi (Public), GitHub ID 1441806427
-main SHA baseline e ultimo verificato prima di questo aggiornamento: cc8f42d4512a7a9d002188010015d36244313923
-work branch: work/M02-governance
-PR: #1 (DRAFT) https://github.com/morellialberto-alt/alberto-audio-midi/pull/1
-PR HEAD al momento della creazione PR: 86eac38d38f8886134e8c8102ccf7325623f65e9
-ATTENZIONE: il commit che modifica questo snapshot fa avanzare il PR HEAD. Rileggere il PR e il branch per lo SHA corrente.
-Staging: non configurato; nessun ambiente persistente assunto
-CI: NON CONFIGURATA; G3 NON AVVIATO; nessuna esecuzione o job verde
-G2 FQ: non ancora approvata; documenti e PR da qualificare
-Protezioni main: false e rulesets vuoto al momento del controllo; endpoint dettagliato 403. Nessuna protezione automatica attiva dichiarata.
-Piano GitHub: NON VERIFICATO (non dedurre dal tipo di repository)
-Licenza: NON DECISA, LICENSE non creato
-Nuove spese ricorrenti: NON AUTORIZZATE
+Ultimo snapshot: 2026-11-01. Non sostituisce il Recovery Audit live.
+
+## Stato verificato prima dell'ultimo aggiornamento
+- Milestone: M02 / G2, preparazione della qualificazione.
+- Repo: https://github.com/morellialberto-alt/alberto-audio-midi — Public.
+- main: cc8f42d4512a7a9d002188010015d36244313923, non modificato dal bootstrap.
+- Branch di lavoro: work/M02-governance.
+- PR: https://github.com/morellialberto-alt/alberto-audio-midi/pull/1 (Draft, OPEN, NON MERGED).
+- PR HEAD osservato prima di questo snapshot: 9e0e3d5cf06e865d05b8a905081dafcbf7631e26. Il commit di questo aggiornamento lo cambierà: rileggere sempre.
+- Staging: NON CONFIGURATO. Non presumere una worktree locale persistente.
+- Ruleset protect-main ID 26311423: ACTIVE, ~DEFAULT_BRANCH, deletion, non_fast_forward, pull_request (0 review richieste). Nessun bypass. Verificato con API.
+- Required status checks: NON CONFIGURATI. Definirli solo quando i check sono stabili.
+- Workflow governance .github/workflows/governance.yml: aggiunto alla PR; stato CI da controllare live. NON è la prima build/test applicativa G3.
+- FQ G2: NON ANCORA APPROVATA. Nessun merge autorizzato.
+- Licenza di distribuzione: DA DECIDERE. Nuove spese ricorrenti: NON AUTORIZZATE.
+- Piano GitHub: NON VERIFICATO.
 
 ## Single-Writer Epoch
-Epoch ID: M02-20261101-governance-01
-Writer: ChatGPT per Product Owner
-Branch/ambito: work/M02-governance, documenti bootstrap e apertura PR #1
-Baseline SHA: cc8f42d4512a7a9d002188010015d36244313923
-Acquired at: 2026-11-01, audit live prima delle scritture
-Status: RELEASED al termine del lotto corrente dopo verifica del commit; da riacquisire per nuove modifiche.
-Non è un lock GitHub distribuito; ogni operatore deve controllare eventuali scritture concorrenti.
+- ID: M02-20261101-governance-ci-02.
+- Writer: ChatGPT, per il Product Owner.
+- Ambito: workflow validazione governance e stato operatore su work/M02-governance.
+- Baseline branch prima del lotto: bde7a6d9ed786ac1b04205e1900ba6978451c5ce.
+- Acquisizione: 2026-11-01, dopo audit remoto di branch, PR, ruleset e assenza di writer concorrenti.
+- Stato: RELEASED al termine di pubblicazione e verifica finale; non è un lock distribuito.
+- Nessun altro commit concorrente osservato al momento dell'inserimento del workflow.
 
-## Stato G2
-14 file di governance sul branch work; main invariato al precedente controllo.
-Nessuna release, nessun merge, nessun codice prodotto.
-NEXT: verifica live PR, branch, file, Drive PROJECT_INDEX e protezione main. Non avviare G3 o merge senza decisione PO.
+## Fonti autorevoli Drive
+Product Charter v1.1:
+https://docs.google.com/document/d/1wkdqx7RWQyWcO-T8MR3eE8wLHgqrTXEJBauI6NNTwYk/edit?usp=drivesdk
+DECISION_LOG e ADR-0002:
+https://docs.google.com/document/d/1R_Ibusa0DER1Jw98xkKgr9q0fC9EKkJUiwY2YWvqKyY/edit?usp=drivesdk
+PROJECT_INDEX:
+https://docs.google.com/document/d/1S3Ay3LWVZ2mY6huxGPoSCFtheb4Uboow6tB6feZ4sUs/edit?usp=drivesdk
+
+## Next
+1. Rileggere PR HEAD SHA dopo questo commit e lo stato della governance CI.
+2. Se CI FAIL, verificare il job minimo necessario e correggere con lotto tracciato.
+3. Qualificare M02/G2 distinguendo verifica documentale, CI e approvazione PO.
+4. Non confondere la CI documentale con G3: toolchain/scaffold applicativo non approvati.
+5. Nessun merge su main senza FQ positiva e autorizzazione esplicita del PO.
