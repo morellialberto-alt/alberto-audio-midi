@@ -1,0 +1,94 @@
+name: G2 Governance Validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "AGENTS.md"
+      - "README.md"
+      - "docs/**"
+      - "tests/**"
+      - ".github/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    name: governance-docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out governance candidate
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate required contracts and basic safety
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          required = [
+              "README.md",
+              "AGENTS.md",
+              ".github/pull_request_template.md",
+              "docs/OPERATIONAL_HANDOFF_CONTRACT.md",
+              "docs/ACTIVE_OPERATOR_STATE.md",
+              "docs/CI_GATES.md",
+              "docs/TEST_STRATEGY.md",
+              "docs/MIDI_CONTRACT.md",
+              "docs/AUDIO_CONTRACT.md",
+              "docs/ARCHITECTURE.md",
+              "docs/WORKSTREAMS.md",
+              "tests/README.md",
+          ]
+          root = pathlib.Path(".")
+          errors = []
+          for path in required:
+              candidate = root / path
+              if not candidate.is_file() or not candidate.read_text(encoding="utf-8").strip():
+                  errors.append(f"Required governance file missing or empty: {path}")
+
+          markers = {
+              "AGENTS.md": ["Single-Writer Epoch", "main", "Product Owner"],
+              "docs/OPERATIONAL_HANDOFF_CONTRACT.md": ["Recovery Audit", "Single-Writer Epoch"],
+              "docs/CI_GATES.md": ["CI GREEN", "FQ PASS", "G3"],
+              "docs/MIDI_CONTRACT.md": ["Determinismo", "Studio One"],
+              "docs/AUDIO_CONTRACT.md": ["Play/Stop/Loop", "offline"],
+          }
+          for path, phrases in markers.items():
+              file = root / path
+              if not file.exists():
+                  continue
+              data = file.read_text(encoding="utf-8")
+              for phrase in phrases:
+                  if phrase not in data:
+                      errors.append(f"{path} missing expected policy term: {phrase}")
+
+          sensitive = re.compile(
+              r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|"
+              r"\bghp_[A-Za-z0-9]{20,}\b|"
+              r"\bgithub_pat_[A-Za-z0-9_]{20,}\b"
+          )
+          files = subprocess.check_output(["git", "ls-files", "-z"]).decode().split("\0")
+          for path in filter(None, files):
+              f = root / path
+              if not f.is_file() or f.is_symlink():
+                  continue
+              try:
+                  content = f.read_text(encoding="utf-8")
+              except (UnicodeError, OSError):
+                  continue
+              if sensitive.search(content):
+                  errors.append(f"Potential secret pattern in tracked file: {path}")
+
+          if errors:
+              print("\n".join(errors), file=sys.stderr)
+              sys.exit(1)
+          print(f"G2 governance validation passed: {len(required)} required contracts.")
+          PY
