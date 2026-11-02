@@ -29,3 +29,9 @@ MERGED: integrazione su main, separata da CI/FQ.
 - Progetti: round-trip, errori, versioni.
 - Determinismo: input/seed/versione riproducibili.
 - FQ: prove, SHA e consenso PO. Nessuna promozione per supposizioni.
+
+## Addendum corrente M03/G3 (2026-11-02)
+La precedente affermazione "nessuna CI configurata" è fotografia pre-G2: workflow G2 governance-docs verificato SUCCESS sul PR HEAD 74a00c107d42f3da2a5b7fbd09449b141ac50ce3 (run 41347778777), PR #1 merged. Non prova build applicativa.
+G3 definisce due check applicativi Windows: g3-head-windows (SHA esatto della PR) e g3-merge-windows (SHA del merge candidate). Ciascuno esegue npm ci, typecheck, build, test. Non dichiarare GREEN prima di run completed/success associati agli SHA osservati.
+Required status checks: non configurati; eventuale attivazione soltanto dopo stabilità verificata e permessi adeguati.
+FQ PASS e MERGED richiedono ulteriori decisioni esplicite del PO.

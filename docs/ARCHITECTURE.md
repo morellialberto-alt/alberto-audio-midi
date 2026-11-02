@@ -19,3 +19,6 @@ C: browser/PWA offline come fallback.
 
 ## Decisioni aperte
 Framework Windows definitivo, librerie, PPQ, formato file progetto, benchmark, asset sonori e licenze. Niente API a pagamento, dipendenze o framework scelti automaticamente.
+
+## M03/G3 — Decisione limitata
+ADR-0003 Drive: TypeScript/Node.js 24 LTS approvati per scaffold e test del modello eventi, non come framework desktop o runtime audio definitivo. La prova architetturale Windows rimane M04.

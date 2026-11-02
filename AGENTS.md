@@ -30,3 +30,6 @@ Nessuna LICENSE senza decisione PO; nessuna spesa ricorrente senza autorizzazion
 CI G3 solo dopo toolchain approvata. Non attribuire CI o esiti a questo bootstrap.
 Test futuri: seed/versione deterministici, invarianti locked parts, round-trip progetto, MIDI letto da parser indipendente, preview senza note sospese, test manuali Studio One.
 Rileggere docs/OPERATIONAL_HANDOFF_CONTRACT.md e docs/CI_GATES.md.
+
+## Decisione transitoria approvata M03/G3 (2026-11-02)
+L'originaria clausola "stack specifico non approvato" riguarda l'architettura definitiva. Il Product Owner ha approvato TypeScript e Node.js 24 LTS solo come toolchain scaffold G3, registrata in ADR-0003 Drive. Framework desktop/audio, licenza e scelte PPQ/formato restano NON approvati. Nessun merge M03 autorizzato.
