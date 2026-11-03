@@ -1,22 +1,27 @@
 # ALBERTO AUDIO/MIDI
 
-**Stato: bootstrap M02/G2 in corso. Nessuna implementazione musicale avviata.**
+**Stato osservato alla baseline M03/G3 (2026-11-02): M02/G2 FQ PASS e PR #1 MERGED. Fase B M03 autorizzata dal Product Owner; G3 NON QUALIFICATO.**
 
-Software Windows 11 per generare, modificare, ascoltare e salvare composizioni MIDI con quattro sezioni coordinate: batteria, accordi, basso e melodia. Il motore musicale deve essere indipendente dall'interfaccia.
+Software Windows 11 per generare, modificare, ascoltare e salvare composizioni MIDI con batteria, accordi, basso e melodia. Motore musicale indipendente dalla UI e dall'audio. Prototipo funzionale e MVP esteso restano distinti.
 
-## Prodotto e fonti autorevoli
-Product Charter v1.1 APPROVED dal Product Owner il 1 novembre 2026. I requisiti di prodotto, le ADR e la roadmap approvati sono autorevoli su Google Drive. Questo repository pubblico conserva contratti tecnici versionati, senza pubblicare documenti privati e senza duplicare la Product Charter.
+## Toolchain preliminare G3
+TypeScript 5.9.3, Node.js 24.22.2 LTS per test/build; tipi Node 24.19.2. Questa scelta riguarda solo G3: non determina framework Windows, PPQ, formato progetto o runtime audio.
+
+Core: `src/core/events.ts`, `src/core/index.ts`. Eventi in tempo intero astratto, validazione runtime e ordinamento canonico senza mutazione. Nessuna generazione musicale, playback, UI o esportazione MIDI implementati.
+
+## Verifiche
+- `npm ci` (richiede accesso al registro npm durante il setup)
+- `npm run typecheck`
+- `npm run build`
+- `npm test`
+
+La CI G3 verifica PR HEAD e candidato di merge su runner Windows, con esiti distinti. Un risultato CI non equivale a FQ del PO né autorizza il merge.
 
 ## Governance
-- Il PO approva scope, spese, architettura definitiva e ogni merge su main.
-- Usare work/Mxx-tema e PR Draft verso main.
-- Dopo il commit iniziale manuale di bootstrap, vietati commit diretti su main.
-- Prima di scrivere, verificare live branch, SHA, PR, CI e Single-Writer Epoch.
-- Nessun merge senza CI GREEN sul candidato, FQ e consenso esplicito PO.
-- Licenza di distribuzione NON scelta; non aggiungere LICENSE.
-- Repository pubblico: vietato inserire segreti, file privati e asset di terzi non autorizzati.
+- Product Charter v1.1 APPROVED e ADR su Google Drive; contratti tecnici su GitHub.
+- Branch `work/Mxx-tema`, PR Draft, Single-Writer Epoch e Recovery Audit live prima delle scritture.
+- Nessun commit diretto su `main`; nessun merge senza CI sul commit candidato, FQ positiva e consenso PO.
+- Repository pubblico: niente segreti, dati personali non necessari o asset privati.
+- Nessuna LICENSE o spesa ricorrente senza decisione del PO.
 
-Leggere AGENTS.md e docs/OPERATIONAL_HANDOFF_CONTRACT.md prima di intervenire.
-
-## Stato
-La milestone attuale è M02, governance. G3 e sviluppo del prodotto NON avviati. Lo stato Git effettivo prevale sui file di snapshot.
+Leggere `AGENTS.md` e `docs/OPERATIONAL_HANDOFF_CONTRACT.md`. Lo stato Git live prevale su snapshot.
