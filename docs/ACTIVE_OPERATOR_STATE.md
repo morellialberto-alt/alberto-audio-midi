@@ -67,3 +67,19 @@ Questo addendum sostituisce per lo stato corrente la precedente riga 'ACQUIRED' 
 - Single-Writer Epoch M03-20261102-first-green-ci-01: RELEASED al termine del lotto documentale; nessun writer concorrente osservato sul remoto. L'epoch non e un lock distribuito e ogni nuovo lotto richiede audit/acquisizione propria.
 - Required status checks: NON CONFIGURATI. Licenza, costi, framework Windows: NON DECISI/AUTORIZZATI.
 - Gate G3: NON FQ PASS; nessun merge autorizzato. NEXT: verificare ultimo HEAD CI, aggiornare indice Drive e presentare rapporto FQ al PO. 
+
+## Stato corrente M04/G4 — 2026-11-04 — preparazione FQ
+Le sezioni sopra rimangono storico M02–M03, non stato attuale.
+PO approva D1–D7 e separatamente autorizza Fase B.
+main: 48085fd53e7580f56dbab22a86818b1f6e6859df, invariato;
+PR #4 DRAFT sul branch work/M04-windows-midi-poc, nessun merge.
+B1 PPQ480/test core e B2 JSON/MIDI/parser indipendente: CI GREEN.
+B3 Electron Web Audio e packaging Forge Windows: CI HEAD/MERGE GREEN
+sul candidato a0a7e8f7d52165ac67aa10f3ff0b7972b51ae338;
+run 41831310018 (desktop), 41831309971 (MIDI),
+41831309933 (G3 core), 41831309801 (governance).
+Nuova SHA B4 da qualificare prima della FQ; non riutilizzare vecchi run.
+Epoch B1, B2-P, B2-MIDI, B3 RELEASED.
+B4 PREPARED per test PO Windows 11: test hardware/offline/audio NON ESEGUITI.
+Nessun framework definitivo, spese, LICENSE, M05 o merge autorizzati.
+Recovery Audit live resta obbligatorio per ogni nuovo lotto.

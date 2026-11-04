@@ -42,3 +42,12 @@ sono richiesti sul ruleset protect-main attivo. Il testo pre-G3 in alto e storic
 PO ha approvato D1-D7 e la Fase B M04 separatamente. I nuovi check G4 non sostituiscono
 quelli G3 prima della loro verifica su SHA reale. La FQ G4 richiede prove reali Windows 11,
 offline, audio, persistenza e parser indipendente: CI da sola non basta.
+
+## CI G4 implementata — 2026-11-04
+Nuovi job Windows g4-midi-head-windows/g4-midi-merge-windows per SMF e parser Mido,
+g4-desktop-head-windows/g4-desktop-merge-windows per Electron Forge make,
+core headless npm test e verifica SHA.
+Run candidate B3 41831310018 (desktop), 41831309971 (MIDI) SUCCESS;
+G3 41831309933 e governance 41831309801 SUCCESS.
+Non sostituire required checks G3 sul ruleset senza nuova decisione/verification.
+La CI di packaging verifica presenza distributables, NON avvio reale Windows 11 o audio.
