@@ -29,3 +29,11 @@ Non dimostra salvataggio file su Windows, che richiede l'adapter desktop.
 Serializer @tonejs/midi, validazione con parser Mido indipendente, file SMF Type 1,
 verifica su Windows/Studio One. Non dichiarare B2 completo senza tali evidenze.
 Il lotto B3 con Electron/Web Audio e packaging non e iniziato.
+
+## Chiusura sottolotto B2-P
+HEAD verificata: 0d8f58b6c8b2d901d4dc90d9ce43baa93052e9a5.
+Run 41827421626 COMPLETED/SUCCESS su g3-head-windows e g3-merge-windows
+con npm ci, typecheck, build, tutti i test. Governance 41827421632 SUCCESS.
+Il sottolotto B2-P e CI GREEN; questo non equivale a B2 completo.
+Epoch M04-20261104-B2-persistence-01: RELEASED con questo handoff documentale;
+verificare CI sul nuovo SHA prima di progressione. Nessuna modifica a main.
