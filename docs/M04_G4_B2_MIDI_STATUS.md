@@ -41,3 +41,16 @@ apps/desktop/package-lock.json e stato verificato in lettura: npm lockfile v3, T
 Il nuovo workflow G4 richiede ora due job separati, g4-midi-head-windows e g4-midi-merge-windows,
 su PR HEAD e merge candidate, senza risoluzione dinamica delle dipendenze.
 La pubblicazione di tale workflow richiede nuova verifica CI su SHA aggiornato.
+
+## Chiusura sottolotto B2 MIDI (evidenze remote)
+Ultimo candidato funzionale: 65c07ef7a3c00af6acf7d73cc135ce0bbf660411.
+G4 MIDI Independent Validation run 41829131840 SUCCESS sullo stesso HEAD:
+g4-midi-head-windows SUCCESS e g4-midi-merge-windows SUCCESS.
+G3 Application CI run 41829131980 SUCCESS, governance 41829131837 SUCCESS.
+Il lockfile npm V3 apps/desktop/package-lock.json è presente nel branch.
+La verifica indipendente Mido conserva tutte le 9 note della fixture, velocity,
+durata, tempo, metrica, canali e due tracce musicali in SMF Type 1.
+B2 livello core/persistenza in memoria e export/parser CI è CI GREEN.
+Ancora NON qualificata l'apertura/salvataggio file tramite UI/Windows, che è B3.
+Epoch M04-20261104-B2-midi-02: RELEASED con questo handoff.
+G4 FQ NON ESEGUITA e nessun merge autorizzato.
