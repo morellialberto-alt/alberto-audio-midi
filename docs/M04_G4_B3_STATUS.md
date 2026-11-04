@@ -52,3 +52,17 @@ la verifica e stata corretta in PowerShell e il run successivo ha avuto successo
 Dipendenze desktop fissate su package-lock v3 172 pacchetti, npm ci senza risoluzione dinamica.
 Aggiunto job g4-desktop-merge-windows per build/packaging del merge candidate; CI DA VERIFICARE.
 La FQ Windows 11 reale, installazione, offline, ascolto e Studio One NON SONO STATI TESTATI.
+
+## Chiusura tecnica B3 / handoff
+SHA candidato verificato: 009e95162ed31a7bb9b1aa222aeddec8eab857a3.
+Run G4 Windows Desktop Packaging 41830832493 COMPLETED / SUCCESS.
+Job g4-desktop-head-windows e g4-desktop-merge-windows entrambi SUCCESS, inclusi
+npm ci, test headless, sintassi JS, staging del core, Forge make e verifica ZIP/Setup.exe.
+Artifact HEAD id 13321014468, size 467636632 bytes, link tramite Actions run.
+Run G4 MIDI 41830832610 SUCCESS; G3 core 41830832483 SUCCESS;
+governance 41830832584 SUCCESS, tutti per il medesimo HEAD.
+Nessuna attestazione di esecuzione Windows 11 reale, offline o playback audibile.
+La compatibilita runtime/packaging e da verificare fisicamente sul PC del PO.
+Single-Writer Epoch M04-20261104-B3-01: RELEASED alla chiusura del handoff;
+la CI va verificata sul nuovo commit documentale prima del lotto B4.
+PR #4 resta DRAFT; main non e stata modificata; FQ NON APPROVATA.
