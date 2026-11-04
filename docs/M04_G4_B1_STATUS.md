@@ -39,3 +39,16 @@ Nessuna dipendenza audio/MIDI nuova installata nel lotto B1. B2: serializer, par
 B3: Electron Web Audio e packaging Windows. B4: report, CI/head+merge, handoff, prove manuali Windows/Studio One.
 Nessuna funzionalita generativa M05, implementazione PD-0001 limitata alla futura estendibilita.
 Nessuna spesa o licenza di distribuzione autorizzata. CI G4 e prove Windows NON ANCORA ESEGUITE.
+
+## Verifica lotto B1 (2026-11-04)
+Commit iniziale: b49b087cebbc05f86a156bbf0a3fdc6d811fd19c — CI run 41826507891 FAILED nella fase Test.
+Causa verificata sui log: Node.js 24 esegue anche i test TypeScript sorgente con il comando node --test,
+i cui import .js non esistono nel sorgente. Non e un difetto del core.
+Correzione: npm test esegue esplicitamente i file di test compilati in dist/tests.
+Candidato riqualificato: 773b8b95e54247b98b4fa97c78e3958ea6326ad1.
+CI run 41826734789 COMPLETED/SUCCESS: g3-head-windows e g3-merge-windows SUCCESS,
+entrambi con npm ci, typecheck, build e test. Governance run 41826734804 SUCCESS.
+Il batch B1 e tecnicamente CI GREEN, non implica FQ G4 PASS o merge.
+Single-Writer Epoch M04-20261104-B1-01: RELEASED dopo verifica remota del lotto B1;
+questo addendum documentale completa l'handoff, la CI sullo SHA del nuovo addendum va verificata.
+NEXT: Recovery Audit nuovo, nuova epoch B2; nessuna modifica a main.
