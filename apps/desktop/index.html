@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ALBERTO AUDIO/MIDI — G4</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <p class="eyebrow">M04 / G4 · PROVA TECNICA WINDOWS</p>
+    <h1>ALBERTO AUDIO/MIDI</h1>
+    <p>Primo percorso MIDI end-to-end. Questo non è ancora un editor o un generatore compositivo.</p>
+    <section aria-label="Trasporto">
+      <h2>Ascolto locale</h2>
+      <div class="actions">
+        <button id="play" type="button">▶ Play</button>
+        <button id="stop" type="button">■ Stop</button>
+        <label><input id="loop" type="checkbox"> Loop</label>
+      </div>
+    </section>
+    <section aria-label="Progetto">
+      <h2>Progetto e MIDI</h2>
+      <div class="actions">
+        <button id="fixture" type="button">Nuova fixture</button>
+        <button id="save" type="button">Salva JSON</button>
+        <button id="open" type="button">Apri JSON</button>
+        <button id="export" type="button">Esporta MIDI</button>
+      </div>
+      <p id="description">Caricamento fixture…</p>
+      <pre id="tracks" aria-label="Tracce MIDI"></pre>
+    </section>
+    <p id="status" role="status" aria-live="polite">Inizializzazione…</p>
+    <footer>480 PPQ · File MIDI Type 1 · Oscillatori Web Audio · Nessun servizio cloud</footer>
+  </main>
+  <script type="module" src="./renderer.mjs"></script>
+</body>
+</html>

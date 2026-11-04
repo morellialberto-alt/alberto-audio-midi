@@ -35,3 +35,19 @@ La precedente affermazione "nessuna CI configurata" è fotografia pre-G2: workfl
 G3 definisce due check applicativi Windows: g3-head-windows (SHA esatto della PR) e g3-merge-windows (SHA del merge candidate). Ciascuno esegue npm ci, typecheck, build, test. Non dichiarare GREEN prima di run completed/success associati agli SHA osservati.
 Required status checks: non configurati; eventuale attivazione soltanto dopo stabilità verificata e permessi adeguati.
 FQ PASS e MERGED richiedono ulteriori decisioni esplicite del PO.
+
+## Addendum M04/G4 — 2026-11-04
+G3 e stato integrato con FQ PASS CON RISERVE; i check g3-head-windows e g3-merge-windows
+sono richiesti sul ruleset protect-main attivo. Il testo pre-G3 in alto e storico, non stato corrente.
+PO ha approvato D1-D7 e la Fase B M04 separatamente. I nuovi check G4 non sostituiscono
+quelli G3 prima della loro verifica su SHA reale. La FQ G4 richiede prove reali Windows 11,
+offline, audio, persistenza e parser indipendente: CI da sola non basta.
+
+## CI G4 implementata — 2026-11-04
+Nuovi job Windows g4-midi-head-windows/g4-midi-merge-windows per SMF e parser Mido,
+g4-desktop-head-windows/g4-desktop-merge-windows per Electron Forge make,
+core headless npm test e verifica SHA.
+Run candidate B3 41831310018 (desktop), 41831309971 (MIDI) SUCCESS;
+G3 41831309933 e governance 41831309801 SUCCESS.
+Non sostituire required checks G3 sul ruleset senza nuova decisione/verification.
+La CI di packaging verifica presenza distributables, NON avvio reale Windows 11 o audio.

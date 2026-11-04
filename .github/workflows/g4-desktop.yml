@@ -1,0 +1,114 @@
+name: G4 Windows Desktop Packaging
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  desktop-head-windows:
+    name: g4-desktop-head-windows
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - name: Checkout exact PR HEAD
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Verify SHA
+        shell: pwsh
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          $actual = (git rev-parse HEAD).Trim()
+          if ($actual -ne $env:EXPECTED_SHA) { throw "SHA mismatch" }
+      - name: Set up Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - name: Build and test headless core
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test
+      - name: Install desktop dependency tree
+        run: npm ci --prefix apps/desktop --no-audit --no-fund
+      - name: Syntax check isolated desktop modules
+        run: |
+          node --check apps/desktop/main.cjs
+          node --check apps/desktop/preload.cjs
+          node --check apps/desktop/renderer.mjs
+          node --check apps/desktop/midi.mjs
+      - name: Stage compiled core
+        run: node scripts/stage-desktop.cjs
+      - name: Make portable Windows package and installer
+        run: npm --prefix apps/desktop run make
+      - name: Verify installer and ZIP artifacts
+        shell: pwsh
+        run: |
+          $artifacts = Get-ChildItem apps/desktop/out/make -File -Recurse
+          if (!($artifacts | Where-Object { $_.Name -like "*Setup.exe" })) { throw "Missing Windows installer" }
+          if (!($artifacts | Where-Object { $_.Extension -eq '.zip' })) { throw "Missing portable ZIP" }
+          $artifacts | Select-Object FullName,Length | Format-Table
+      - name: Upload unsigned G4 Windows packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: g4-desktop-head-windows
+          path: apps/desktop/out/make/**
+          retention-days: 3
+          compression-level: 0
+
+  desktop-merge-windows:
+    name: g4-desktop-merge-windows
+    if: github.event_name == 'pull_request'
+    runs-on: windows-2025
+    timeout-minutes: 40
+    steps:
+      - name: Checkout exact PR merge candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Verify SHA
+        shell: pwsh
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          $actual = (git rev-parse HEAD).Trim()
+          if ($actual -ne $env:EXPECTED_SHA) { throw "SHA mismatch" }
+      - name: Set up Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+      - name: Build and test headless core
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test
+      - name: Install desktop dependency tree
+        run: npm ci --prefix apps/desktop --no-audit --no-fund
+      - name: Syntax check isolated desktop modules
+        run: |
+          node --check apps/desktop/main.cjs
+          node --check apps/desktop/preload.cjs
+          node --check apps/desktop/renderer.mjs
+          node --check apps/desktop/midi.mjs
+      - name: Stage compiled core
+        run: node scripts/stage-desktop.cjs
+      - name: Make portable Windows package and installer
+        run: npm --prefix apps/desktop run make
+      - name: Verify installer and ZIP artifacts
+        shell: pwsh
+        run: |
+          $artifacts = Get-ChildItem apps/desktop/out/make -File -Recurse
+          if (!($artifacts | Where-Object { $_.Name -like "*Setup.exe" })) { throw "Missing Windows installer" }
+          if (!($artifacts | Where-Object { $_.Extension -eq '.zip' })) { throw "Missing portable ZIP" }
+          $artifacts | Select-Object FullName,Length | Format-Table
