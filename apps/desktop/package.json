@@ -6,9 +6,20 @@
   "type": "module",
   "description": "M04/G4 Windows feasibility probe, not a distribution release",
   "scripts": {
-    "midi:fixture": "node tests/export-fixture.mjs"
+    "midi:fixture": "node tests/export-fixture.mjs",
+    "start": "electron .",
+    "make": "electron-forge make"
   },
   "dependencies": {
-    "@tonejs/midi": "2.0.28"
+    "@tonejs/midi": "2.0.28",
+    "electron-squirrel-startup": "1.0.1"
+  },
+  "main": "main.cjs",
+  "author": "ALBERTO AUDIO MIDI G4 (proof of concept)",
+  "devDependencies": {
+    "electron": "45.2.1",
+    "@electron-forge/cli": "8.0.1",
+    "@electron-forge/maker-squirrel": "8.0.1",
+    "@electron-forge/maker-zip": "8.0.1"
   }
 }

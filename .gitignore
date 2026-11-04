@@ -24,3 +24,8 @@ coverage/
 local-assets/
 private-data/
 *.bak
+
+# Artefatti M04, soltanto build locale/CI
+.ci/
+apps/desktop/core/
+apps/desktop/out/
