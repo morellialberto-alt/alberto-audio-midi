@@ -61,7 +61,7 @@ jobs:
         shell: pwsh
         run: |
           $artifacts = Get-ChildItem apps/desktop/out/make -File -Recurse
-          if (!($artifacts | Where-Object { $_.Name -match 'Setup\\.exe$' })) { throw "Missing Windows installer" }
+          if (!($artifacts | Where-Object { $_.Name -like "*Setup.exe" })) { throw "Missing Windows installer" }
           if (!($artifacts | Where-Object { $_.Extension -eq '.zip' })) { throw "Missing portable ZIP" }
           $artifacts | Select-Object FullName,Length | Format-Table
       - name: Upload unsigned G4 Windows packages
