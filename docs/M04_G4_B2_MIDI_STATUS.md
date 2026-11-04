@@ -31,3 +31,13 @@ Nessun sample o asset sonoro esterno e incluso.
 ## Non ancora dimostrato
 Pacchetto Electron Windows, audio, persistenza file su disco,
 offline e import manuale Studio One; tutti M04 in progresso.
+
+## CI indipendente dopo lockfile versionato
+Lo SHA 5d5c8153f9be47e4d5d53ac78f0358f7c636a4fe ha superato:
+- G4 MIDI Independent Validation run 41828744090 SUCCESS
+- G3 Application CI run 41828744159 SUCCESS (head/merge)
+- G2 Governance Validation run 41828744077 SUCCESS
+apps/desktop/package-lock.json e stato verificato in lettura: npm lockfile v3, Tonejs MIDI 2.0.28.
+Il nuovo workflow G4 richiede ora due job separati, g4-midi-head-windows e g4-midi-merge-windows,
+su PR HEAD e merge candidate, senza risoluzione dinamica delle dipendenze.
+La pubblicazione di tale workflow richiede nuova verifica CI su SHA aggiornato.
