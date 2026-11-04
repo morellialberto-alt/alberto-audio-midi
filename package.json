@@ -9,7 +9,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "build": "tsc -p tsconfig.json",
-    "test": "node --test dist/tests/core.test.js"
+    "test": "node --test"
   },
   "devDependencies": {
     "@types/node": "24.19.2",

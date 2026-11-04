@@ -1,3 +1,9 @@
+# Stato corrente: M04/G4, Fase B autorizzata (2026-11-04)
+
+M03/G3 CLOSED / FQ PASS CON RISERVE / PR #2 MERGED. La proposta tecnica G4 D1-D7 e la Fase B sono state autorizzate separatamente dal Product Owner. Il lotto B1 introduce soltanto modello temporale, tracce ed eventi per una fixture di prova; NON contiene ancora Electron, audio, persistenza o export MIDI. G4 NON QUALIFICATO; main resta invariata. Fonte di stato: docs/M04_G4_B1_STATUS.md e audit GitHub live.
+
+---
+
 # ALBERTO AUDIO/MIDI
 
 **Stato osservato alla baseline M03/G3 (2026-11-02): M02/G2 FQ PASS e PR #1 MERGED. Fase B M03 autorizzata dal Product Owner; G3 NON QUALIFICATO.**
