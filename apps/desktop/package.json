@@ -1,0 +1,14 @@
+{
+  "name": "alberto-audio-midi-g4",
+  "productName": "ALBERTO AUDIO MIDI G4",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "M04/G4 Windows feasibility probe, not a distribution release",
+  "scripts": {
+    "midi:fixture": "node tests/export-fixture.mjs"
+  },
+  "dependencies": {
+    "@tonejs/midi": "2.0.28"
+  }
+}
