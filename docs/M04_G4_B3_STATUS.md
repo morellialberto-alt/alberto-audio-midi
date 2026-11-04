@@ -41,3 +41,14 @@ authorized single writer then verified with npm ci; no CI PASS until checked on 
 Windows CI can prove package generated. It cannot prove physical audio, Windows 11
 installation, network-disabled launch, human hearing or actual Studio One import.
 Those require PO manual qualification with exact SHA and downloaded artifacts.
+
+## Prima prova packaging e adeguamento CI
+SHA bae0348a2cb161cc04d88e491a040d2305fd80af:
+G4 Windows Desktop Packaging run 41830290522 COMPLETED/SUCCESS, job g4-desktop-head-windows.
+Artefatto ZIP di Actions id 13322137498, nome g4-desktop-head-windows, 467636630 byte.
+Lo ZIP di Actions contiene i pacchetti ZIP/Squirrel Forge. Installer NON FIRMATO.
+Il run iniziale 41829836006 aveva build Forge riuscita ma assertion errata del filename;
+la verifica e stata corretta in PowerShell e il run successivo ha avuto successo.
+Dipendenze desktop fissate su package-lock v3 172 pacchetti, npm ci senza risoluzione dinamica.
+Aggiunto job g4-desktop-merge-windows per build/packaging del merge candidate; CI DA VERIFICARE.
+La FQ Windows 11 reale, installazione, offline, ascolto e Studio One NON SONO STATI TESTATI.
