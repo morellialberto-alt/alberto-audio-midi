@@ -1,4 +1,5 @@
-import { Midi } from "@tonejs/midi";
+import ToneMidi from "@tonejs/midi";
+const { Midi } = ToneMidi;
 
 /** SMF Type 1 adapter. Business events and project validation live in the core. */
 export function exportProjectMidi(project) {
